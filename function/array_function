@@ -1,0 +1,25 @@
+array 生成一个数组
+array_combine生成一个数组 用一个数组的值作为键 另一个数组的值作为值
+range创建并返回一个包含指定范围的元素的数组
+compact创建一个由参数所带变量的数组
+array_fill用给定的填充（值生成）数组
+array_chunk把一个数组分割成为数组块
+array_merge把两个或多个数组合并成为一个数组
+array_slice在数组中根据条件取出一段值 并返回
+array_diff返回两个数组的差集数组
+array_intersect返回两个或者多个数组的交集数组
+array_search在数组中查找一个值 返回一个键 没有返回返回假
+array_splice把数组中一部分删除 用其他值代替
+array_sum返回数组中所有值得总和
+in_array在数组中搜索给定的元素
+array_key_exists判断某个数组中是否存在指定的key
+current返回数组中的当前元素
+next把指向当前元素指针的位置移动到下一个元素 并返回当前元素的值
+prev把指向当前元素指针的位置移动到上一个元素 并返回当前元素的值
+end将数组内部指针指向最后一个元素 并返回该元素的值
+reset把数组内部指针指向第一个元素 并返回这个元素的值
+list用数组中的元素为一组变量赋值
+array_shift删除数组中的第一个元素 并返回删除元素的值
+array_unshift在数组开头插入一个或者多个元素
+array_push向数组最后压入一个或多个元素
+array_pop删除数组中最后一个元素

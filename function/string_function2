@@ -1,0 +1,14 @@
+字符串函数
+strtolower()字符串转为小写
+strtoupper()字符串转为大写
+ucfirdt()字符串首字母大写
+ucword()字符串每个单词首字符转为大写
+htmllentities()把字符转为html实体
+htmlspecialchars()预定义字符转html编码
+n12br()\n转义为<br>标签
+strip_tags()剥去HTML,XML,以及php的标()删除由addslashes()添加的转义字符
+addcslashes()在指定的字符前添加反斜线转义字符串中的字符
+stripcslashes（）删除由addslashes()添加的转义字符
+quotemta（）在字符串中某些预定义字符前添加反斜线
+chr（）从指定的ASCII返回字符
+order（）返回字符串第一个字符的ASSII值

@@ -1,0 +1,96 @@
+mysql注意事项
+注意:
+    1:每个sql命令都需要使用分好来玩成或者\G
+    2:可以将一行命令拆分成多行
+    3:可以使用\c来取消本行命令
+    4:可以通过exit或者\q来取消
+命令一  查看税局库及穿件数据库
+    1：查看数据库
+        SHOW DATABASES；
+    2：创建数据库
+        CREATE DATABASE [IF NOT EXITS]数据名（小写）
+        CREATE DATABASE IF NOT EXITS ss19如果要是创建的数据库不存在则创建
+二 选择数据库及查看数据库中的数据表
+    1：选择数据库
+        USE  数据库名
+        如：USE ss19;
+    如果你是用的不是上面的命令 会出现下面的错误的代码
+        ERROR 1064(3D000):No database selected
+三  查看数据库中的数据表
+    SHOW TABLES
+四   删除数据库
+        DROP DATABASE [IF EXISTS]数据库名
+        DROP DATABASE IF EXISTS ss19；如果存在ss19数据库则删除不存在则不删除
+    注意：
+        1：MYSQL数据库中命令不区分大小写
+        2：每创建一个数据库  就会在data目录下创建一个以此数据库名命名的文件夹
+        3：在windows下，数据库名称也是不区分大小希写的，但是在linux下严格区分大小写
+五   创建简单的数据表
+        CREATA TABLE IF NOT EXISTS user（
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY;
+            name VARCHAR(255)NOT NULL UNIQUE,
+            sex TINYINT NOT NULL DEFAULT1,
+            age TINYINT NOT NULLDEFAULT 0
+        ）ENGINE=MylSAM DEFAULT CHASET=utf8;
+六   删除数据表
+        DROP TABLE [IF EXISTS]数据库名
+        DROP TABLE IF EXISTS user；
+七   表中数据简单管理
+    1：添加数据
+        ISNERT INTO 表名（字段名）VALUES(字段的值)
+        ISNERT INTO user(id,name,sex,age)VALUES(NULL,'宇翔',2,30)
+    2：查看数据
+        UBDATE 表名 SET 你要修改的名字 WHERE id = 1;
+        UPDATE user SET name=‘李涛’WHERE id=1;
+    4： 删除数据库
+        DELETE FROM 表名 WHWEW id =1；
+        UPDATA FROM uaer WHERE id = 1;
+八    新建普通用户
+        GRANT SELECT ON *.* TO 'longlong'@'loaclhost'IDENTIF BY '123456'
+    重点：GRSNTA语句不但可以创建用户  也可以修改用户密码  而且还可以设置用户权限  因此 GRANT语句是musql中一个非常重要的语句
+九   查看所有用户
+        SELECT user,host FROM mydql.user;
+十   删除普通用户
+            DROP USER user
+        列如
+            DROP USER 'longlong'@‘laoclhost’；
+十一   root用户修改自己的密码
+            SET PASSWORD = PASSWORD('654321');
+十二   root修改普通密码
+            SET PASSWORD FOR 'useer'@'hostname'=PASSWORD('newpassword');
+            SET PASSWORD FOR 'longlong'@‘loacalhost’=PASSWORD('654321');
+十三   授权
+            GRANT SELECT,INSERT,UPDATE,DELETE  NO *.* TO 'longlong'@'loaclhost'
+            IDENTIFIED BY'123456';
+十九   收回权限及查看权限
+    1.查看全新
+        SHOW GRANT FOR 'username'@‘hostname’；
+    2.收回权限
+        ROVOKE INSERT,UPDATE,DELETE ON *.* FROM 'longlong'@‘localhost’；
+二十   数据备份
+    mysqldump -uusername -p库名表名>要保存的位置
+    如果要是出现拒绝访问  说明你的权限不够
+    请使用超级管理员权限打开文件
+二十一  还原数据
+            mysql -utoot ss19<C:/ss19.sql
+                                                       数据表类型
+    1，创建数据表
+        CREATE TABLE IF NOT EXISTS user(
+        id  INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL UNIQUE,
+        sex TINYINT NOT NULL DEFAULT 1,
+        age TINYINT NOT NULL DEFAULT 0
+        )ENGINE =MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS user(
+id  INT UNSIGNED  AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255) NOT NULL UNIQUE,
+sex TINYINT NOT NULL DEFAULT 1,
+age TINYINT NOT NULL DEFAULT 0
+)ENGINE =MyISAM DEFAULT CHARSET=utf8;
+    注意：
+        使用zerofill的时候mysql会自动加上UNSIGNED（无符号）属性  那么改整数类型只能表示无符号数  去显示默然长度比默认显示宽度小一
+        在设置了显示宽度是  如果插入的数据宽度大小大于设置显示的宽度是  数据依然课插入   且能够显示但是该设置宽度失效
+    注意：
+         数据宽度不能大于默认宽度 如果大于默认宽度 那该数据已经超过该类型的最大值  因为最大值宽度应该小于等于默认宽度 如果一个值大于最大值 将不能插入
+
+
